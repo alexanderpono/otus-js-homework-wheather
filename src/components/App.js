@@ -41,14 +41,6 @@ const menu = [
     {text: 'About', ref: "#about"},
 ]
 
-const appData = {
-    filter : {
-        group : 'M-R',
-        letter: 'M',
-        pageNo: 0
-    }
-}
-
 class App extends Component {
     constructor() {
         super();

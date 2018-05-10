@@ -4,10 +4,9 @@ import data from '../indexed_russian_city.list';
 let initialState =
 {
     filterGroup : filters.NO_FILTER,
-    filterLetter : filters.NO_FILTER,
     pageNo : 0,
     cities: data.cities,
-    visibleCities: []
+    visibleCities: data.cities.slice(0, 20)
 };
 
 
@@ -51,7 +50,6 @@ export default function srcList(state = initialState, action) {
 
             let newState = {...state,
                 filterGroup: action.payload,
-                filterLetter:filters.NO_FILTER,
                 cities: citiesList,
                 visibleCities: visibleCities,
                 pageNo: 0
@@ -60,28 +58,6 @@ export default function srcList(state = initialState, action) {
             return newState;
 
 
-
-
-        case filters.CLICK_FILTER_LETTER:
-            console.log('srcList() CLICK_FILTER_LETTER');
-            bounds = getFilteredBounds([action.payload], 0, 20);
-            citiesList = initialState.cities.slice(bounds.start, bounds.end);
-
-            pagedBounds = getBoundsToShow(citiesList.length, 0, 20);
-            console.log('reducer srcList() pagedBounds=', pagedBounds);
-            visibleCities = citiesList.slice(pagedBounds.start, pagedBounds.end);
-
-            newState = {
-                ...state,
-                filterLetter: action.payload,
-                cities: citiesList,
-                visibleCities: visibleCities,
-                pageNo: 0
-            };
-            // return Object.assign({}, state, {
-            //     filterGroup: action.payload
-            // });
-            return newState;
 
 
         case filters.CLICK_CLEAR_FILTER:
@@ -126,7 +102,7 @@ export default function srcList(state = initialState, action) {
                         newPageNo = totalPages-1;
                     };
                     break;
-
+                default:
             }
 
             pagedBounds = getBoundsToShow(state.cities.length, newPageNo, 20);
@@ -167,33 +143,8 @@ function getFilteredBounds(lettersAr, pageNo, pageSize) {
         if (letterInfo.end > end) {
             end = letterInfo.end;
         };
-
-        //if ()
     }
-
-    // let pageStart = start + pageNo * pageSize;
-    // let pageEnd = start + (pageNo + 1) * pageSize;
-    // if (pageStart > start) {
-    //     start = pageStart;
-    // };
-    // if (pageEnd < end) {
-    //     end = pageEnd;
-    // };
-
-    // console.log('letter=', letter);
-    // let letterIndexData = data.index[letter];
-    // console.log('letterIndexData=', letterIndexData);
-    // let start = letterIndexData.start + (pageNo * pageSize);
-    // let end = start + pageSize;
-    // if (end > letterIndexData.end) {
-    //     end = letterIndexData.end;
-    // };
-
     return {start : start, end : end};
-
-
-    //let cities = this.props.data.cities.slice(letterIndexData.start, letterIndexData.end);
-
 }
 
 function getBoundsToShow(itemsCount, pageNo, pageSize) {

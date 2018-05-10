@@ -4,29 +4,19 @@ import * as filters from "../constants/constants";
 let initialState =
 {
     filterGroup : filters.NO_FILTER,
-    filterLetter : filters.NO_FILTER,
     pageNo : 0
 };
 
 
 export default function filter(state = initialState, action) {
-    return state;
+    // return state;
     console.log('filter1() state, action=', state, action);
     switch (action.type) {
         case filters.CLICK_FILTER_GROUP:
             console.log('filter() CLICK_FILTER_GROUP');
             var newState = {...state,
                 filterGroup: action.payload,
-                filterLetter:filters.NO_FILTER
             };
-            // return Object.assign({}, state, {
-            //     filterGroup: action.payload
-            // });
-            return newState;
-
-        case filters.CLICK_FILTER_LETTER:
-            console.log('filter() CLICK_FILTER_LETTER');
-            newState = {...state, filterLetter: action.payload};
             // return Object.assign({}, state, {
             //     filterGroup: action.payload
             // });
@@ -35,8 +25,7 @@ export default function filter(state = initialState, action) {
         case filters.CLICK_CLEAR_FILTER:
             console.log('filter() CLICK_CLEAR_FILTER');
             newState = {...state,
-                filterGroup: filters.NO_FILTER,
-                filterLetter:filters.NO_FILTER
+                filterGroup: filters.NO_FILTER
             };
             return newState;
 
@@ -65,8 +54,7 @@ export default function filter(state = initialState, action) {
             }
             console.log('filter() CLICK_CLEAR_FILTER');
             newState = {...state,
-                filterGroup: filters.NO_FILTER,
-                filterLetter:filters.NO_FILTER
+                filterGroup: filters.NO_FILTER
             };
             return newState;
 
