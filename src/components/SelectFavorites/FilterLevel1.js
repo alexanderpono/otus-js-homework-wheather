@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Button from '../Button';
+import { groupFilter, clearFilter } from '../../actions'
+import * as filters from "../../constants/constants";
 
-class FilterLevel1 extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-            visibleGroup : 1
-        }
-    }
-
-    render() {
-        return (
+const FilterLevel1 = ({ dispatch }) => {
+    return (
+        <div>
             <div>
-                <div>
-                    <Button caption={'A-F'}/>
-                    <Button caption={'G-L'}/>
-                    <Button caption={'M-R'}/>
-                    <Button caption={'S-Z'}/>
-                </div>
-                <div>{this.state.visibleGroup}</div>
+                <Button caption={'A-F'} onClick={() => {dispatch(groupFilter(filters.FILTER_A_F))}} />
+                <Button caption={'G-L'} onClick={() => {dispatch(groupFilter(filters.FILTER_G_L))}} />
+                <Button caption={'M-R'} onClick={() => {dispatch(groupFilter(filters.FILTER_M_R))}} />
+                <Button caption={'S-Z'} onClick={() => {dispatch(groupFilter(filters.FILTER_S_Z))}} />
+                <Button caption={'ALL'} onClick={() => {dispatch(clearFilter())}} />
             </div>
-        );
-    }
+            <div></div>
+        </div>
+    )
 }
 
-export default FilterLevel1;
+export default connect()(FilterLevel1)

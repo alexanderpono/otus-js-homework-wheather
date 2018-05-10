@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import SelectFavoritesPage from "./SelectFavorites/SelectFavoritesPage";
 import FavoritesWheatherPage from "./FavoritesWheather/FavoritesWheatherPage";
+// import data from '../indexed_russian_city.list';
 
 const cities = [
     {
@@ -40,21 +41,35 @@ const menu = [
     {text: 'About', ref: "#about"},
 ]
 
+const appData = {
+    filter : {
+        group : 'M-R',
+        letter: 'M',
+        pageNo: 0
+    }
+}
 
 class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            filterGroup: 'A-F'
+        };
+    }
+
     render() {
+        // console.log('data.length=', data.length);
         return (
             <div>
                 <div className="App">
                     <Header menu={menu}/>
                 </div>
-
-                <SelectFavoritesPage cities={cities} />
+                <SelectFavoritesPage />
                 <FavoritesWheatherPage cities={cities} />
             </div>
         );
     }
 }
 
-export default App;
 
+export default App;
