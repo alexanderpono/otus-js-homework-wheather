@@ -1,5 +1,4 @@
 export const CLICK_FILTER_GROUP = 'CLICK_FILTER_GROUP';
-export const CLICK_FILTER_LETTER = 'CLICK_FILTER_LETTER';
 export const CLICK_CLEAR_FILTER = 'CLICK_CLEAR_FILTER';
 export const CLICK_NAV_PAGE = 'CLICK_NAV_PAGE';
 export const FILTER_A_F = 'A-F';
