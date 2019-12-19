@@ -1,0 +1,40 @@
+.App {
+    text-align: center;
+}
+
+.App-intro {
+    font-size: large;
+}
+
+.favoritesSelectControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.citiesListContainer {
+    flex-grow: 1;
+}
+
+.favoritesContainer {
+    flex-grow: 1;
+}
+
+.CitiesSelector {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.favoritesSelectPage h1 {
+    text-align: center;
+}
+
+.favoritesWheaterPage h1 {
+    text-align: center;
+}
+
+.CityWheater {
+    margin: 0px 0px 20px 0px;
+}
